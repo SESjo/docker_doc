@@ -1,0 +1,31 @@
+volumes:
+  nextcloud_aio_mastercontainer:
+    name: nextcloud_aio_mastercontainer
+services:
+  nginx_proxy_manager:
+    image: jc21/nginx-proxy-manager:latest
+    restart: unless-stopped
+    container_name: nginx-proxy-manager
+    network_mode: host
+    environment: # Uncomment this if IPv6 is not enabled on your host
+      - DISABLE_IPV6=true # Uncomment this if IPv6 is not enabled on your host
+    volumes:
+      - ./data:/data
+      - ./letsencrypt:/etc/letsencrypt
+  nextcloud:
+    image: nextcloud/all-in-one:latest-arm64
+    restart: unless-stopped
+    container_name: nextcloud-aio-mastercontainer
+    depends_on:
+      - nginx_proxy_manager
+    volumes:
+      - nextcloud_aio_mastercontainer:/mnt/docker-aio-config
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    ports:
+      - 8080:8080
+    environment:
+      - APACHE_PORT=11000
+networks:
+  default:
+    external: true
+    name: nginx-network

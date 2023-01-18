@@ -1,0 +1,14 @@
+services:
+  app:
+    image: your_app_image
+    container_name: name_app
+    restart: unless-stopped
+    ports:
+      - your_port:8050
+    volumes: 
+      - path_to_you_app:/app
+# the following section is required if using nginx
+networks:
+  default:
+    external: true
+    name: nginx-network

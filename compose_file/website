@@ -1,0 +1,12 @@
+services:
+  web:
+    image: your_website_image
+    container_name: name_website
+    restart: unless-stopped
+    ports:
+      - choose_your_port:80
+# the following section is required if using nginx
+networks:
+  default:
+    external: true
+    name: nginx-network
