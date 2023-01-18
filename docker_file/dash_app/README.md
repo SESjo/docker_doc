@@ -8,4 +8,4 @@ Ideally, the "context" is located in the same directory as the `Dockerfile`.
 
 ## Installation
 
-docker build -f Dockerfile -t name_app .
+`docker build -f Dockerfile -t name_app .`
