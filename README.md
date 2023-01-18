@@ -4,7 +4,7 @@ A repo to save all the relevant documentation about Docker containers running on
 
 ## Usage
 
-Just download the repository and explore the documentation (only [Compose](https://docs.docker.com/compose/compose-file/) files for the moment).
+Just download the repository and explore the documentation (only [Dockerfile](https://docs.docker.com/engine/reference/builder/) and [Compose](https://docs.docker.com/compose/compose-file/) files for the moment).
 
 ## Roadmap
 
